@@ -39,10 +39,38 @@
         </div>
 
         <footer class="taskbar">
+            {{ if .IsHome }}
             <div class="start-button">SYS</div>
-            {{ if not .IsHome }}
-            <div class="task-tab">{{ .Title }}</div>
+            {{ else }}
+            <a href="{{ .Site.Home.RelPermalink }}" class="breadcrumb-link breadcrumb-parent">SYS</a>
+            
+            {{ $path := strings.TrimPrefix "/" .RelPermalink }}
+            {{ $path := strings.TrimSuffix "/" $path }}
+            {{ $segments := split $path "/" }}
+            {{ $title := .Title }}
+            
+            {{ range $i, $segment := $segments }}
+                {{ if $segment }}
+                    <span class="breadcrumb-separator">/</span>
+                    {{ if eq $i (sub (len $segments) 1) }}
+                    <!-- Current page (last segment) -->
+                    <span class="breadcrumb-current">{{ $title }}</span>
+                    {{ else }}
+                    <!-- Parent breadcrumb - build path up to this level -->
+                    {{ $parentPath := "" }}
+                    {{ range $j := seq 0 $i }}
+                        {{ if eq $j 0 }}
+                            {{ $parentPath = index $segments 0 }}
+                        {{ else }}
+                            {{ $parentPath = printf "%s/%s" $parentPath (index $segments $j) }}
+                        {{ end }}
+                    {{ end }}
+                    <a href="/{{ $parentPath }}/" class="breadcrumb-link breadcrumb-parent">{{ humanize $segment }}</a>
+                    {{ end }}
+                {{ end }}
             {{ end }}
+            {{ end }}
+            
             <div class="clock" id="clock">00:00:00</div>
         </footer>
     </div>

@@ -266,6 +266,8 @@ body::before {
   display: flex;
   align-items: center;
   padding: 0 10px;
+  gap: 0;
+  flex-wrap: nowrap;
 }
 
 .start-button {
@@ -276,6 +278,54 @@ body::before {
   display: flex;
   align-items: center;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  flex-shrink: 0;
+}
+
+.breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 15px;
+  border: 1px solid var(--neon-cyan);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--neon-cyan);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  transition: all 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.breadcrumb-link:hover {
+  color: var(--neon-pink);
+  border-color: var(--neon-pink);
+  filter: drop-shadow(0 0 5px var(--neon-pink));
+}
+
+.breadcrumb-separator {
+  padding: 0 8px;
+  font-size: 12px;
+  color: var(--neon-cyan);
+  line-height: 28px;
+  flex-shrink: 0;
+}
+
+.breadcrumb-current {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 15px;
+  border: 1px solid var(--neon-pink);
+  font-size: 12px;
+  background: rgba(255, 0, 60, 0.2);
+  color: var(--neon-pink);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  cursor: default;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .clock {
