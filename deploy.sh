@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
 if ! command -v hugo >/dev/null 2>&1; then
 	echo "Error: 'hugo' is not installed or not on PATH." >&2
 	exit 1
