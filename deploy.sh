@@ -10,6 +10,6 @@ if ! command -v async-neocities >/dev/null 2>&1; then
 	exit 1
 fi
 
+rm -rf public
 hugo
-async-neocities --cleanup
-async-neocities --supporter
+async-neocities --cleanup --supporter

@@ -1,5 +1,14 @@
 baseURL = 'https://systemancer.neocities.org/'
 languageCode = 'en-us'
-title = 'Website'
+title = 'Systemancer'
 relativeURLs = true
 canonifyURLs = false
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      wrapStandAloneImageMarkdown = true
+    [markup.goldmark.parser.attribute]
+      block = true
+    [markup.goldmark.renderer]
+      unsafe = true

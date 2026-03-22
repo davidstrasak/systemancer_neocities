@@ -1,0 +1,10 @@
+<div class="content-side-by-side">
+  <div class="content-side-by-side-text">{{ .Inner }}</div>
+  {{ with .Get "image" }}
+  <img
+    class="content-side-by-side-image"
+    src="{{ . }}"
+    alt="{{ default "" ($.Get "alt") }}"
+  />
+  {{ end }}
+</div>

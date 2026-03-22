@@ -1,0 +1,13 @@
+<div class="content-image-grid">
+  {{ $images := split (.Get "images") "," }} {{ $captions := split (default ""
+  (.Get "captions")) "," }} {{ range $index, $element := $images }} {{ $image :=
+  trim $element " " }} {{ if $image }}
+  <figure class="content-image-grid-item">
+    {{ if lt $index (len $captions) }} {{ $caption := trim (index $captions
+    $index) " " }} {{ if $caption }}
+    <img src="{{ $image }}" alt="{{ $caption }}" />
+    <figcaption>{{ $caption }}</figcaption>
+    {{ end }} {{ end }}
+  </figure>
+  {{ end }} {{ end }}
+</div>
