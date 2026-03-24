@@ -1,0 +1,196 @@
+{{ define "main" }} {{ $fragmentsPage := .Site.GetPage "music/fragments" }} {{
+$musicEntries := where .RegularPages "File.BaseFileName" "ne" "fragments" }} {{
+$fragments := slice }} {{ with $fragmentsPage }} {{ with .Params.fragments }} {{
+$fragments = . }} {{ end }} {{ end }}
+
+<main class="viewport-window music-list-window">
+  <div class="title-bar">
+    <div class="title-bar-text">{{ .Title }}</div>
+    {{ partial "window-controls" . }}
+  </div>
+
+  <section class="window-body music-list-body">
+    {{ with .Content }}
+    <div class="cyber-text">{{ . }}</div>
+    {{ end }} {{ with $fragmentsPage }}
+    <a
+      class="music-fragments-banner"
+      href="{{ .RelPermalink }}"
+      aria-label="Open Fragments"
+    >
+      <div class="music-fragments-preview">
+        <svg
+          id="music-fragments-banner-graph"
+          class="music-fragments-banner-graph"
+          aria-hidden="true"
+        ></svg>
+        <span class="music-fragments-cta">Fragments</span>
+      </div>
+    </a>
+    {{ end }}
+
+    <section class="music-list-section" aria-labelledby="music-list-title">
+      <h2 id="music-list-title">More Music</h2>
+
+      <ul class="music-entry-list">
+        {{ range $musicEntries.ByDate.Reverse }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <span>{{ .Date.Format "2006-01-02" }}</span>
+        </li>
+        {{ else }}
+        <li class="music-entry-empty">More tracks coming online soon.</li>
+        {{ end }}
+      </ul>
+    </section>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script id="music-fragments-banner-data" type="application/json">
+  {{ $fragments | default (slice) | jsonify }}
+</script>
+<script>
+  (function initMusicBannerGraph() {
+    const svgEl = document.getElementById("music-fragments-banner-graph");
+    const payloadEl = document.getElementById("music-fragments-banner-data");
+
+    if (!svgEl || !payloadEl || !window.d3) {
+      return;
+    }
+
+    const d3 = window.d3;
+    let rawFragments = [];
+
+    try {
+      const parsed = JSON.parse(payloadEl.textContent?.trim() || "[]");
+      rawFragments = typeof parsed === "string" ? JSON.parse(parsed) : parsed;
+    } catch (error) {
+      rawFragments = [];
+    }
+
+    const fragments = rawFragments.filter(
+      (item) => item && item.id && item.title && item.category,
+    );
+
+    const preview = svgEl.closest(".music-fragments-preview");
+    if (!preview || fragments.length === 0) {
+      return;
+    }
+
+    const rootNode = {
+      id: "root",
+      label: "Fragments",
+      nodeType: "root",
+      radius: 36,
+    };
+
+    const categories = [
+      ...new Set(fragments.map((item) => item.category).filter(Boolean)),
+    ]
+      .sort((a, b) => a.localeCompare(b))
+      .map((category) => ({
+        id: `category:${category}`,
+        label: category,
+        nodeType: "category",
+        category,
+        radius: 24,
+      }));
+
+    const fragmentNodes = fragments.map((item) => ({
+      id: item.id,
+      label: item.title,
+      nodeType: "fragment",
+      category: item.category,
+      radius: 18,
+    }));
+
+    const nodes = [rootNode, ...categories, ...fragmentNodes];
+    const links = [
+      ...categories.map((category) => ({
+        source: rootNode.id,
+        target: category.id,
+      })),
+      ...fragmentNodes.map((fragment) => ({
+        source: `category:${fragment.category}`,
+        target: fragment.id,
+      })),
+    ];
+
+    let width = preview.clientWidth;
+    let height = preview.clientHeight;
+
+    const svg = d3.select(svgEl).attr("viewBox", `0 0 ${width} ${height}`);
+    const graphRoot = svg.append("g");
+
+    const linkSelection = graphRoot
+      .append("g")
+      .selectAll("line")
+      .data(links)
+      .join("line")
+      .attr("class", "music-banner-link");
+
+    const nodeSelection = graphRoot
+      .append("g")
+      .selectAll("g")
+      .data(nodes)
+      .join("g")
+      .attr(
+        "class",
+        (d) => `music-banner-node music-banner-node-${d.nodeType}`,
+      );
+
+    nodeSelection.append("circle").attr("r", (d) => d.radius);
+
+    nodeSelection
+      .append("text")
+      .attr("dy", (d) => d.radius + 20)
+      .attr("text-anchor", "middle")
+      .text((d) => d.label);
+
+    const simulation = d3
+      .forceSimulation(nodes)
+      .force(
+        "link",
+        d3
+          .forceLink(links)
+          .id((d) => d.id)
+          .distance((d) => (d.source.id === "root" ? 210 : 160))
+          .strength(0.56),
+      )
+      .force("charge", d3.forceManyBody().strength(-680))
+      .force(
+        "collide",
+        d3
+          .forceCollide()
+          .radius((d) => d.radius + 28)
+          .iterations(2),
+      )
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .velocityDecay(0.45)
+      .on("tick", ticked);
+
+    simulation.alpha(1).restart();
+
+    function ticked() {
+      linkSelection
+        .attr("x1", (d) => d.source.x)
+        .attr("y1", (d) => d.source.y)
+        .attr("x2", (d) => d.target.x)
+        .attr("y2", (d) => d.target.y);
+
+      nodeSelection.attr("transform", (d) => `translate(${d.x},${d.y})`);
+    }
+
+    function resizeGraph() {
+      width = preview.clientWidth;
+      height = preview.clientHeight;
+      svg.attr("viewBox", `0 0 ${width} ${height}`);
+      simulation.force("center", d3.forceCenter(width / 2, height / 2));
+      simulation.alpha(0.8).restart();
+    }
+
+    window.addEventListener("resize", resizeGraph);
+  })();
+</script>
+{{ end }}
