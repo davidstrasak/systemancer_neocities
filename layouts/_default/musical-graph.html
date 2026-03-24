@@ -9,6 +9,10 @@
   </div>
 
   <section class="window-body musical-graph-body">
+    <aside class="graph-tip" aria-live="polite">
+      Tip: Click a node at the end of a line to play a musical fragment.
+    </aside>
+
     <svg
       id="musical-graph"
       class="musical-graph-canvas"
@@ -43,6 +47,23 @@
     width: 100%;
     height: 100%;
     display: block;
+  }
+
+  .graph-tip {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    max-width: min(420px, calc(100% - 28px));
+    border: 1px solid rgba(0, 243, 255, 0.6);
+    background: rgba(0, 20, 30, 0.78);
+    color: rgba(0, 243, 255, 0.95);
+    padding: 8px 10px;
+    font-size: 11px;
+    line-height: 1.35;
+    letter-spacing: 0.4px;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+    pointer-events: none;
   }
 
   .graph-link {
@@ -141,6 +162,13 @@
   }
 
   @media (max-width: 900px) {
+    .graph-tip {
+      top: 10px;
+      left: 10px;
+      max-width: calc(100% - 20px);
+      font-size: 10px;
+    }
+
     .graph-node text {
       font-size: 10px;
     }
