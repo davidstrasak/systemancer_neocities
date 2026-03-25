@@ -1,0 +1,43 @@
+{{ define "main" }}
+<main class="viewport-window">
+  <div class="title-bar">
+    <div class="title-bar-text">{{ .Title }}</div>
+    {{ partial "window-controls" . }}
+  </div>
+
+  <div class="window-body">
+    {{ with .Content }}
+    <div class="cyber-text">{{ . }}</div>
+    {{ end }}
+
+    <div class="books-grid">
+      {{ range .RegularPages.ByDate.Reverse }}
+      <a href="{{ .RelPermalink }}" class="book-card">
+        {{ if .Params.cover_image }}
+        <div class="book-cover">
+          <img src="{{ .Params.cover_image }}" alt="{{ .Title }}" />
+          <div class="book-overlay">
+            <div class="overlay-content">
+              <h3>{{ .Title }}</h3>
+              <p class="book-date">{{ .Date.Format "2006-01-02" }}</p>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+        <div class="book-info">
+          <h3>{{ .Title }}</h3>
+          {{ if .Params.tags }}
+          <div class="book-tags">
+            {{ range .Params.tags }}
+            <span class="book-tag">{{ . }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+          <p class="book-date">{{ .Date.Format "2006-01-02" }}</p>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</main>
+{{ end }}

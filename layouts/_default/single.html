@@ -8,8 +8,52 @@
   <article class="window-body">
     <div class="cyber-text">
       <time>{{ .Date.Format "2006-01-02" }}</time>
+      {{ if .Params.tags }}
+      <div class="review-tags">
+        {{ range .Params.tags }}
+        <span class="review-tag">{{ . }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
     </div>
     <div class="content-body">{{ .Content }}</div>
   </article>
 </main>
+
+<script>
+  // Remove link from book cover image but preserve styling
+  document
+    .querySelectorAll('.content-body a[href*="goodreads.com"] img')
+    .forEach((img) => {
+      const link = img.parentElement;
+      if (link.tagName === "A") {
+        // Copy the link's inline style to the image
+        if (link.getAttribute("style")) {
+          const existingStyle = img.getAttribute("style") || "";
+          img.setAttribute(
+            "style",
+            link.getAttribute("style") +
+              (existingStyle ? "; " + existingStyle : ""),
+          );
+        }
+        link.replaceWith(img);
+      }
+    });
+
+  // Replace "View all my reviews" link with link to book page
+  document
+    .querySelectorAll('.content-body a[href*="review/list"]')
+    .forEach((link) => {
+      link.href = "/book/";
+      link.textContent = "View all my reviews";
+    });
+
+  // Add target="_blank" to remaining Goodreads links
+  document
+    .querySelectorAll('.content-body a[href*="goodreads.com"]')
+    .forEach((link) => {
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener noreferrer");
+    });
+</script>
 {{ end }}
