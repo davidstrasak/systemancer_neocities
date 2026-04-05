@@ -301,5 +301,13 @@
       link.setAttribute("target", "_blank");
       link.setAttribute("rel", "noopener noreferrer");
     });
+
+  // Add target="_blank" to all external links in the content body
+  document.querySelectorAll('.content-body a[href^="http"]').forEach((link) => {
+    if (link.hostname !== window.location.hostname) {
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener noreferrer");
+    }
+  });
 </script>
 {{ end }}
