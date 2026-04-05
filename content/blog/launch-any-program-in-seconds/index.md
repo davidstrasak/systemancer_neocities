@@ -5,6 +5,7 @@ tags: ["Windows OS", "AutoHotkey"]
 ---
 
 Ever since about 6 months ago I started experimenting with setting keyboard shortcuts on Windows. That leads up to today when I have my most efficient PC setup I've ever had and today I will share how to set it up with you.
+
 The setup is as easy as it can be and it can be set up in **less than 15 minutes**, but it can make your usage of the PC more effective and easier forever! :D
 
 ## How to set this up:
@@ -40,6 +41,7 @@ If you want a custom set up like what I did, ==**Autohotkey**== **will** answer 
 ## How to truly run any app
 
 Running an app like excel is good, ==but not good enough==. It requires the app you want to bind to some key combination to be an **explicit statement** you could write into the Windows Run Utility (the one where we wrote shell:startup earlier).
+
 -> For example, my notetaking app is called obsidian, but ==if you try to write "obsidian", it will be unable to launch==, since not all apps have this shorter launch command defined.
 
 ### How to bind any app you have installed:
@@ -62,6 +64,7 @@ This example shows how I run the Obsidian app :D.
 ## How to use keys other than the windows key
 
 Short AutoHotkey lesson incoming!
+
 If you wanted to create a script that runs when you press o, without any windows keys, ==you would define it like so==:
 
 ```
@@ -72,6 +75,7 @@ o::
 ```
 
 But that would make it impossible for you to type anything on the keyboard - which is why I used the # symbol.
+
 The # symbol defines the windows key (Symbols like the windows key, Ctrl, Shift, etc. are also called **modifier keys**). There are ways to set other keys to be pressed with your letter on the keyboard.
 
 ### What are the modifier keys?
@@ -110,6 +114,7 @@ Right:: ; Those are the arrow keys
 ```
 
 These are only some of the more useful keys you can bind scripts to. Or you can rebind any other key - <a href="https://www.autohotkey.com/docs/v2/KeyList.htm">There is a wiki for that</a>.
+
 My favorite of these special keys are ==the F1 keys==. One use for them could be writing special characters - those ones that are not available on your keyboard, but you want to use them. But I might explain that in an another blog post :D.
 
 ## How to redefine windows keyboard shortcuts
@@ -139,11 +144,13 @@ This example is showing you how you would go about re-binding the clipboard hist
 ```
 
 So as you can see, it is ==pretty simple and no black magic is needed==. Just rebind the original windows shortcut to the new shortcut and now you can use the original clipboard shortcut for some different key bind with all working as intended.
+
 This works, because if you bind a shortcut to run inside autohotkey, ==the original windows shortcut will always take preference==, before running your other custom defined Win+some key shortcuts.
 
 ## What now?
 
 That's all that I have for this tutorial on how to bind your own windows keyboard shortcuts - ==it really is that easy==. You now have everything you need so you can go :).
+
 If this guide was helpful to you, or if you have some feedback to my blog posts, I would be glad to hear it :D. Thanks for reading!
 
 ## Extra showcase of my own autohotkey script:

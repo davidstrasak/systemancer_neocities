@@ -923,3 +923,11 @@ mark {
   font-family: "Courier New", Courier, monospace;
   font-size: 0.9em;
 }
+
+/* Constraints for markdown images inside content layout */
+.content-body img {
+  max-width: 100%;
+  height: auto;
+  margin: 15px auto;
+  display: block;
+}
