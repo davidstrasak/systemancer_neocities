@@ -100,6 +100,7 @@
         safeHTML }}
       </div>
 
+      {{ if ne .Section "book" }}
       <div
         style="
           margin-top: 50px;
@@ -121,18 +122,6 @@
           "
           >&lt; BACK TO BLOGS</a
         >
-        {{ else if eq .Section "book" }}
-        <a
-          href="/book/"
-          class="review-tag"
-          style="
-            text-decoration: none;
-            font-size: 14px;
-            padding: 10px 20px;
-            display: inline-block;
-          "
-          >&lt; BACK TO BOOKS</a
-        >
         {{ else }}
         <a
           href="/{{ .Section }}/"
@@ -147,6 +136,7 @@
         >
         {{ end }}
       </div>
+      {{ end }}
     </div>
   </article>
 </main>
