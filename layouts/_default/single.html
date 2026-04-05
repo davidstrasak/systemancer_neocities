@@ -6,10 +6,18 @@
   </div>
 
   <article class="window-body">
-    <div class="cyber-text">
-      <time>{{ .Date.Format "2006-01-02" }}</time>
+    <div
+      class="cyber-text"
+      style="
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 15px;
+      "
+    >
+      <time style="white-space: nowrap">{{ .Date.Format "2006-01-02" }}</time>
       {{ if .Params.tags }}
-      <div class="review-tags">
+      <div class="review-tags" style="margin-top: 0">
         {{ range .Params.tags }}
         <span class="review-tag">{{ . }}</span>
         {{ end }}
@@ -45,7 +53,13 @@
     .querySelectorAll('.content-body a[href*="review/list"]')
     .forEach((link) => {
       link.href = "/book/";
-      link.textContent = "View all my reviews";
+      link.innerHTML = "&lt; BACK TO BOOKS";
+      link.className = "review-tag";
+      link.style.textDecoration = "none";
+      link.style.fontSize = "14px";
+      link.style.padding = "8px 16px";
+      link.style.display = "inline-block";
+      link.style.marginTop = "20px";
     });
 
   // Add target="_blank" to remaining Goodreads links
