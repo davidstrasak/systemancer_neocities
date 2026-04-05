@@ -1,0 +1,12 @@
+---
+title: "Justin Alexander - So You Want To Be A Game Master"
+date: "2024-11-24T12:00:00+00:00"
+cover_image: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1731338830l/65212479._SY475_.jpg"
+tags: ["RPG", "Guide"]
+---
+
+<a href="https://www.goodreads.com/book/show/65212479-so-you-want-to-be-a-game-master" style="float: left; padding-right: 20px"><img border="0" alt="So You Want To Be A Game Master: Everything You Need to Start Your Tabletop Adventure for Dungeons and Dragons, Pathfinder, and Other" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1731338830l/65212479._SY475_.jpg" /></a><a href="https://www.goodreads.com/book/show/65212479-so-you-want-to-be-a-game-master">So You Want To Be A Game Master: Everything You Need to Start Your Tabletop Adventure for Dungeons and Dragons, Pathfinder, and Other</a> by <a href="https://www.goodreads.com/author/show/7461891.Justin_Alexander">Justin  Alexander</a><br/>
+My rating: <a href="https://www.goodreads.com/review/show/6198560485">5 of 5 stars</a><br /><br />
+What an amazing book on GMing. <br /><br />What I really liked about this book is that it gives you ways to structure your campaign notes and ways to go about creating a campaign, or a dungeon, or one shots. <br /><br />The book is like an organised collection of remarks that can help you:<br />- Avoid GMing mistakes (make the games as much fun)<br />- Structure your notes (it will tell you which notes structures to use, but it also gives you more if you want them)<br />- See campaigns and adventures as a collection of specific scenarios (dungeon, mystery, heist, ...), so you can use them as kind of "mental models" <br />- It also tells you how to keep things dynamic, so your players won't notice that you are using these mental models.<br />- Start GMing, by giving you a one shot dungeon adventure :D<br /><br />The concepts are presented on different examples, usually with a fantasy and a sci-fi setting example of the concepts. So if you want you can take the structures and run a non-fantasy adventure with them - I ran a call of cthulhu one shot and a cyberpunk-esque campaign session while reading this book :D. 
+<br/><br/>
+<a href="https://www.goodreads.com/review/list/163394279-david-stra-k">View all my reviews</a>

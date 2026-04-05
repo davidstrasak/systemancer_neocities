@@ -1,0 +1,12 @@
+---
+title: "Gabriel Weinberg - Super Thinking: The Big Book of Mental Models"
+date: "2024-06-18T12:00:00+00:00"
+cover_image: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1551785369l/41181911._SY475_.jpg"
+tags: ["Psychology", "Self-Help", "Productivity"]
+---
+
+<a href="https://www.goodreads.com/book/show/41181911-super-thinking" style="float: left; padding-right: 20px"><img border="0" alt="Super Thinking: The Big Book of Mental Models" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1551785369l/41181911._SY475_.jpg" /></a><a href="https://www.goodreads.com/book/show/41181911-super-thinking">Super Thinking: The Big Book of Mental Models</a> by <a href="https://www.goodreads.com/author/show/7754157.Gabriel_Weinberg">Gabriel Weinberg</a><br/>
+My rating: <a href="https://www.goodreads.com/review/show/5955005510">5 of 5 stars</a><br /><br />
+This was my first book on mental models and boy was it a great one. All of these concepts and mental models are super different, so I really feel like I've looked at and learned from a lot of different fields and thought deeply about different problems.<br /><br />It took some time though. About a year to be exact. Now I would say most of this time spent was due to my reading habits, but this book actually takes a long time to complete. Mostly because to take the most from it, I created cards that explain these mental models that were interesting.<br /><br />165 cards to be exact. And I would urge you to also take notes while reading this book. Why?<br /><br />The book features a lot of info. There is about 1 mental model per page and that is okay - you can totally understand what the mental model is about in the moment. But after reading another 20 pages, you might not remember all models anymore. That is okay and you can solve it by taking notes!<br /><br />So all in all:<br />- great introduction to mental models!<br />- i now have great cards that I can randomly pick and read from every day. All written by me in a way I will understand. <br />- lots of thinking about very different themes.<br /><br />My next steps will be looking for some books that have less mental models, but that go more in depth towards their usage and explanation. But it was thanks to this book and I can see these models and recall what they mean at a whim.<br /><br />So even though I've waited a year to say this:<br />5/5 stars. Best book I've ever read.
+<br/><br/>
+<a href="https://www.goodreads.com/review/list/163394279-david-stra-k">View all my reviews</a>
