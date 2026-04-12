@@ -89,20 +89,19 @@
 
             const buttons = windowEl.querySelectorAll('.window-button[data-action]');
             const homeUrl = '{{ .Site.Home.RelPermalink }}';
+            const parentUrl = '{{ if .Parent }}{{ .Parent.RelPermalink }}{{ else }}{{ .Site.Home.RelPermalink }}{{ end }}';
 
             buttons.forEach((button) => {
                 button.addEventListener('click', () => {
                     const action = button.getAttribute('data-action');
 
                     if (action === 'minimize') {
-                        windowEl.classList.toggle('is-minimized');
-                        windowEl.classList.remove('is-maximized');
+                        window.location.href = parentUrl;
                         return;
                     }
 
                     if (action === 'maximize') {
                         windowEl.classList.toggle('is-maximized');
-                        windowEl.classList.remove('is-minimized');
                         return;
                     }
 
